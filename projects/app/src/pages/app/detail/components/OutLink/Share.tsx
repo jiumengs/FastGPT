@@ -21,7 +21,7 @@ import {
   Link
 } from '@chakra-ui/react';
 import { QuestionOutlineIcon } from '@chakra-ui/icons';
-import MyIcon from '@/components/Icon';
+import MyIcon from '@fastgpt/web/components/common/Icon';
 import { useLoading } from '@/web/common/hooks/useLoading';
 import { useQuery } from '@tanstack/react-query';
 import {
@@ -36,7 +36,7 @@ import { useForm } from 'react-hook-form';
 import { defaultOutLinkForm } from '@/constants/app';
 import type { OutLinkEditType, OutLinkSchema } from '@fastgpt/global/support/outLink/type.d';
 import { useRequest } from '@/web/common/hooks/useRequest';
-import { formatPrice } from '@fastgpt/global/support/wallet/bill/tools';
+import { formatStorePrice2Read } from '@fastgpt/global/support/wallet/bill/tools';
 import { OutLinkTypeEnum } from '@fastgpt/global/support/outLink/constant';
 import { useTranslation } from 'next-i18next';
 import { useToast } from '@/web/common/hooks/useToast';
@@ -113,7 +113,7 @@ const Share = ({ appId }: { appId: string }) => {
               <Tr key={item._id}>
                 <Td>{item.name}</Td>
                 <Td>
-                  {formatPrice(item.total)}
+                  {formatStorePrice2Read(item.total)}
                   {feConfigs?.isPlus
                     ? `${
                         item.limit && item.limit.credit > -1
@@ -282,7 +282,7 @@ function EditLinkModal({
   return (
     <MyModal
       isOpen={true}
-      iconSrc="/imgs/modal/shareLight.svg"
+      iconSrc="/imgs/modal/shareFill.svg"
       title={isEdit ? t('outlink.Edit Link') : t('outlink.Create Link')}
     >
       <ModalBody>
